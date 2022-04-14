@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Menu;
 
+use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CreateFormRequest extends FormRequest
@@ -24,13 +25,19 @@ class CreateFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
+            'name' => [
+                'required',
+                Rule::unique('menus')->where(function ($query) {
+                    return $query->where('active', 1);
+                })
+            ],
         ];
     }
 
     public function messages() : array {
         return [
             'name.required' => 'Tên danh mục không được để trống',
+            'name.unique' => 'Tên danh mục đã được sử dụng',
         ];
     }
 }

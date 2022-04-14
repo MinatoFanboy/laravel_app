@@ -24,7 +24,7 @@
                with font-awesome or any other icon font library -->
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-bars nav-icon"></i>
+              <i class="fas fa-bars nav-icon"></i>
               <p>
                 Danh mục
                 <i class="right fas fa-angle-left"></i>
@@ -38,9 +38,27 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../../index2.html" class="nav-link">
+                <a href="/admin/menus/list" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Danh sách danh mục</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+            <i class="fas fa-bags-shopping nav-icon"></i>
+              <p>
+                Sản phẩm
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/admin/products/add" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Thêm sản phẩm</p>
                 </a>
               </li>
             </ul>
