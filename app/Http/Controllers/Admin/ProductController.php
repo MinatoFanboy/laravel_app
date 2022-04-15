@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Product\ProductRequest;
@@ -17,7 +18,10 @@ class ProductController extends Controller
 
     public function index()
     {
-        //
+        return view('admin.product.list', [
+            'title' => 'Danh Sách Sản Phẩm',
+            'products' => $this->productService->get(),
+        ]);
     }
 
     public function create()
@@ -35,9 +39,14 @@ class ProductController extends Controller
         return redirect()->back();
     }
 
-    public function show($id)
+    public function show(Product $product)
     {
-        //
+        return view ('admin.product.edit', [
+            'title' => 'Cập nhật sản phẩm',
+            'products' => $this->productService->get(),
+            'menus' => $this->productService->getMenu(),
+            'product' => $product,
+        ]);
     }
 
     public function edit($id)

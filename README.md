@@ -2,6 +2,7 @@
 
 - Create database on localhost
 - Install modules
+- Rename file **.env.example** to **.env**
 ```bash
 composer install
 ```

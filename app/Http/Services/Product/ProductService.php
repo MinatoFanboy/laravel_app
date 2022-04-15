@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
 
 class ProductService {
+    public function get() {
+        return Product::with('menu')->orderByDesc('id')->paginate(15);
+    }
+
     public function getMenu() {
         return Menu::where('parent_id', 0)->get();
     }
