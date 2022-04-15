@@ -52,4 +52,33 @@ class ProductService {
 
         return true;
     }
+
+    public function update($request, $product) {
+        $isValidate = $this->isValidPrice($request);
+        if ($isValidate == false) return false;
+
+        try {
+            $product->fill($request->input());
+            $product->save();
+            Session::flash('success', 'Cập nhật thành công');
+        } catch (\Exception $e) {
+            Session::flash('error', 'Có lỗi vui lòng thử lại');
+            Log::info($e->getMessage());
+
+            return false;
+        }
+
+        return true;
+    }
+
+    public function delete($request) {
+        $product = Product::where('id', $request->input('id'))->first();
+
+        if ($product) {
+            $product->delete();
+            return true;
+        }
+
+        return false;
+    }
 }

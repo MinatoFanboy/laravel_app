@@ -3,9 +3,10 @@
 @section('head')
     <script src="/ckeditor/ckeditor.js"></script>
 @endsection
-@include('admin.alert')
 
 @section('content')
+    @include('admin.alert')
+    
     <form action="" method="post">
         <div class="card-body">
             <div class="row">

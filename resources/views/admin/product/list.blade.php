@@ -1,6 +1,7 @@
 @extends('admin.main')
+@include('admin.alert')
+
 @section('content')
-    @include('admin.alert')
     <table class="table">
         <thead>
             <tr>
