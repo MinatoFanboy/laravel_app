@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Product\ProductRequest;
 use App\Http\Services\Product\ProductService;
 
 class ProductController extends Controller
@@ -23,13 +24,15 @@ class ProductController extends Controller
     {
         return view('admin.product.add', [
             'title' => 'Thêm Sản Phẩm Mới',
-            'menus' => $this->productService->getMenu();
+            'menus' => $this->productService->getMenu(),
         ]);
     }
 
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
-        //
+        $this->productService->insert($request);
+
+        return redirect()->back();
     }
 
     public function show($id)

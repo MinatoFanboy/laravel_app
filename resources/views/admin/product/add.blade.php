@@ -3,23 +3,22 @@
 @section('head')
     <script src="/ckeditor/ckeditor.js"></script>
 @endsection
+@include('admin.alert')
 
 @section('content')
     <form action="" method="post">
-        @include('admin.alert')
         <div class="card-body">
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="name">Tên sản phẩm</label>
-                        <input type="text" class="form-control" name="name" id="name" placeholder="Tên sản phẩm">
+                        <input type="text" class="form-control" value="{{ old('name') }}" name="name" id="name" placeholder="Tên sản phẩm">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="parent_id">Danh mục</label>
-                        <select id="parent_id" class="form-control" name="parent_id">
-                            <option value="0">Danh mục cha</option>
+                        <label for="menu_id">Danh mục</label>
+                        <select id="menu_id" class="form-control" name="menu_id">
                             @foreach($menus as $menu)
                                 <option value="{{ $menu->id }}">{{ $menu->name }}</option>
                             @endforeach
@@ -32,25 +31,25 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="price">Giá gốc</label>
-                        <input type="number" min="0" class="form-control" name="price" id="price">
+                        <input type="number" min="0" class="form-control" value="{{ old('price') }}" name="price" id="price">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="price_sale">Giá giảm</label>
-                        <input type="number" min="0" class="form-control" name="price_sale" id="price_sale">
+                        <input type="number" min="0" class="form-control" value="{{ old('price_sale') }}" name="price_sale" id="price_sale">
                     </div>
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="description">Mô tả</label>
-                <textarea name="description" class="form-control"></textarea>
+                <textarea name="description" class="form-control">{{ old('description') }}</textarea>
             </div>
 
             <div class="form-group">
                 <label for="content">Mô tả chi tiết</label>
-                <textarea name="content" id="content" class="form-control"></textarea>
+                <textarea name="content" id="content" class="form-control">{{ old('content') }}</textarea>
             </div>
 
             <div class="form-group">
@@ -60,7 +59,7 @@
                 <div id="image_show">
 
                 </div>
-                <input type="hidden" name="file" id="file">
+                <input type="hidden" name="thumb" id="file">
             </div>
 
             <div class="form-group">

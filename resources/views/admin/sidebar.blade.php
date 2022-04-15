@@ -48,7 +48,7 @@
 
           <li class="nav-item">
             <a href="#" class="nav-link">
-            <i class="fas fa-bags-shopping nav-icon"></i>
+            <i class="fas fa-bars nav-icon"></i>
               <p>
                 Sản phẩm
                 <i class="right fas fa-angle-left"></i>
