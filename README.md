@@ -10,3 +10,11 @@ composer install
 ```link storage
 php artisan storage:link
 ```
+
+```create migrate model
+php artisan make:model Slider --migration
+```
+
+```create migrate controller
+php artisan make:controller Admin\SliderController
+```

@@ -68,11 +68,11 @@
             <div class="form-group">
                 <label>Kích hoạt</label>
                 <div class="custom-control custom-radio">
-                    <input class="custom-control-input" type="radio" value="1" id="active" name="active" {{ $menu->product == 1 ? 'checked=""' : '' }}>
+                    <input class="custom-control-input" type="radio" value="1" id="active" name="active" {{ $product->active == 1 ? 'checked=""' : '' }}>
                     <label for="active" class="custom-control-label">Có</label>
                 </div>
                 <div class="custom-control custom-radio">
-                    <input class="custom-control-input" type="radio" value="0" id="noactive" name="active" {{ $menu->product == 0 ? 'checked=""' : '' }}>
+                    <input class="custom-control-input" type="radio" value="0" id="noactive" name="active" {{ $product->active == 0 ? 'checked=""' : '' }}>
                     <label for="noactive" class="custom-control-label">Không</label>
                 </div>
             </div>
