@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MainController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\UploadController;
@@ -35,3 +36,5 @@ Route::middleware(['auth'])->group(function() {
         Route::post('upload/services', [UploadController::class, 'store']);
     });
 });
+
+Route::get('/', [MainController::class, 'index']);
