@@ -12,6 +12,11 @@ class MenuService {
     //     })->get();
     // }
 
+    public function show() {
+        return Menu::select('name', 'id')->limit(3)->
+            where('parent_id', 0)->orderByDesc('id')->get();
+    }
+
     public function getAll() {
         return Menu::orderByDesc('id')->paginate(20);
     }
@@ -66,5 +71,21 @@ class MenuService {
         }
 
         return false;
+    }
+
+    public function getId($id) {
+        return Menu::where('id', $id)->where('active', 1)->firstOrFail();
+    }
+
+    public function getProduct($menu, $request) {
+        $query = $menu->products()->select('id', 'name', 'price', 'price_sale', 'thumb')->where('active', 1);
+        
+        if ($request->input('price')) {
+            $query->orderByDesc('price', $request->input('price'));
+        } else {
+            $query->orderByDesc('id');
+        }
+        
+        return $query->paginate(12)->withQueryString();
     }
 }

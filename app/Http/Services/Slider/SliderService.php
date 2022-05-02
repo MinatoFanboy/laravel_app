@@ -7,6 +7,10 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
 
 class SliderService {
+    public function show() {
+        return Slider::orderByDesc('id')->get();
+    }
+
     public function get() {
         return Slider::orderByDesc('id')->paginate(15);
     }

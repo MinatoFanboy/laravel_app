@@ -1,12 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\Admin\MenuController;
+use App\Http\Controllers\Admin\TestController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\UploadController;
 use App\Http\Controllers\Admin\ProductController;
-use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\Users\LoginController;
 
 Route::get('admin/users/login', [LoginController::class, 'index'])->name('login');
@@ -47,9 +49,23 @@ Route::middleware(['auth'])->group(function() {
             Route::delete('destroy', [SliderController::class, 'destroy']);
         });
 
+        #Order
+        Route::prefix('customer')->group(function() {
+            Route::get('/', [App\Http\Controllers\Admin\CartController::class, 'index']);
+            Route::get('/view/{customer}', [App\Http\Controllers\Admin\CartController::class, 'show']);
+        });
+
         #Upload
         Route::post('upload/services', [UploadController::class, 'store']);
     });
 });
 
 Route::get('/', [MainController::class, 'index']);
+Route::post('/services/load-product', [MainController::class, 'loadProduct']);
+Route::get('/danh-muc/{id}-{slug}.html', [App\Http\Controllers\MenuController::class, 'index']);
+Route::get('/san-pham/{id}-{slug}.html', [App\Http\Controllers\ProductController::class, 'index']);
+Route::post('/add-cart', [CartController::class, 'index']);
+Route::get('/carts.html', [CartController::class, 'show']);
+Route::post('/carts.html', [CartController::class, 'addCart']);
+Route::post('/update-cart', [CartController::class, 'update']);
+Route::get('/carts/delete/{id}', [CartController::class, 'remove']);

@@ -1,7 +1,7 @@
 @extends('admin.main')
-@include('admin.alert')
 
 @section('content')
+    @include('admin.alert')
     <table class="table">
         <thead>
             <tr>
@@ -34,5 +34,7 @@
         </tbody>
     </table>
 
-    {!! $products->links() !!}
+    <div class="card-footer clearfix">
+        {!! $products->links() !!}
+    </div>
 @endsection
